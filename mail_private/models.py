@@ -100,6 +100,12 @@ class MailMessage(models.Model):
             ])._notify(self, force_send=force_send, send_after_commit=send_after_commit, user_signature=user_signature)
         channels_sudo._notify(self)
 
+        # REVIEW:
+        # In the previous IF conditional
+        # "if email_channels or partners_sudo - notif_partners:"
+        # If the recipient is the only one, the message is not sent with longpolling.
+        notif_partners._notify_by_chat(self)
+
         # Discard cache, because child / parent allow reading and therefore
         # change access rights.
         if self.parent_id:
