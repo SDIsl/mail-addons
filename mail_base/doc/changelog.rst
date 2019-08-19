@@ -1,3 +1,15 @@
+`1.0.5`
+-------
+**FIX**: polling errors on heavy server load
+
+`1.0.4`
+-------
+**FIX**: issue related to clear cache
+
+`1.0.3`
+-------
+**FIX**: error on clicking messages preview after sending new message
+
 `1.0.2`
 -------
 
