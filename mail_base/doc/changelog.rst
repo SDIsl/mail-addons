@@ -1,3 +1,17 @@
+`1.1.2`
+-------
+
+**FIX**: random initialization errors
+
+`1.1.1`
+-------
+
+**Fix**: Messages were marked as read, while there were not
+
+`1.1.0`
+-------
+- **New**: added ability to select channels for private message sending.
+
 `1.0.5`
 -------
 **FIX**: polling errors on heavy server load

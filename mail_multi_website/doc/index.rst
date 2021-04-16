@@ -1,6 +1,6 @@
-===========================================
- Email Addresses and Templates per Website
-===========================================
+=====================
+ Multi-Brand Mailing
+=====================
 
 Installation
 ============
@@ -14,6 +14,7 @@ Configuration
 Access to websites
 ------------------
 
+* Activate `Developer mode <https://odoo-development.readthedocs.io/en/latest/odoo/usage/debug-mode.html>`__
 * Go to menu ``[[ Settings ]] >> Users & Companies >> Users``
 * Select a user
 * Grant access ``[x] Multi Websites for Backend``
@@ -53,7 +54,7 @@ Configure ``mail.catchall.domain`` per website. See Documentation of the module 
 Outgoing mails servers per website
 --------------------------
 
-If each domain has different Outgoing Mail Server you need following adjustments 
+If each domain has different Outgoing Mail Server you need following adjustments
 
 * Got to menu ``[[ Website ]] >> Configuration >> Websites``
 * In each Website specify field **Outgoing Mails**

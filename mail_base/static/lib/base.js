@@ -1,3 +1,6 @@
+/*  Copyright 2017 Artyom Losev <https://github.com/ArtyomLosev>
+    Copyright 2019 Artem Rafailov <https://github.com/Ommo73>
+    License LGPL-3.0 (https://www.gnu.org/licenses/lgpl.html). */
 odoo.define('mail_base.base', function (require) {
 "use strict";
 
@@ -119,6 +122,8 @@ ChatAction.include({
         }
     }
 });
+
+function init_chat_manager(){
 
 chat_manager.notify_incoming_message = function (msg, options) {
     if (bus.is_odoo_focused() && options.is_displayed) {
@@ -983,7 +988,9 @@ chat_manager.get_messages = function (options) {
     if ('ids' in options) {
         // get messages from their ids (chatter is the main use case)
         return this._fetchDocumentMessages(options.ids, options).then(function(result) {
-            chat_manager.mark_as_read(options.ids);
+            if (options.shouldMarkAsRead) {
+                chat_manager.mark_as_read(options.ids);
+            }
             return result;
         });
     }
@@ -1404,10 +1411,16 @@ chat_manager.search_partner = function (search_val, limit) {
     });
 }
 
+}; // init_chat_manager
+
+chat_manager.is_ready = chat_manager.is_ready.then(function(){
+
+init_chat_manager();
 chat_manager.start();
 bus.off('notification');
 bus.on('notification', null, function () {
     chat_manager.on_notification.apply(chat_manager, arguments);
+});
 });
 
 return {
